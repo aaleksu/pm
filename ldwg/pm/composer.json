@@ -1,6 +1,7 @@
 {
     "name": "ldwg/pm",
     "description": "Prognoz-molniya",
+    "type": "symfony-bundle",
     "authors": [
         {
             "name": "Ludwig Bistronovsky",
