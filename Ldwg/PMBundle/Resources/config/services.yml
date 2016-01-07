@@ -1,5 +1,0 @@
-services:
-    twig.extension.pm:
-        class: Ldwg\PMBundle\Twig\PMExtension
-        tags:
-            - { name: twig.extension }
