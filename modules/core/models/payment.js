@@ -131,6 +131,13 @@ angular.module('core').factory('Payment', ['$rootScope', function($rootScope){
             }
 
             if(this.monthly) {
+                if(this.regular_date > day_date.getDate()){
+                    var day_date_next = new Date(day_date.getFullYear(), day_date.getMonth(), day_date.getDate() + 1);
+                    if(day_date_next.getMonth() != day_date.getMonth()) {
+                        return true;
+                    }
+                }
+                
                 return this.regular_date == day_date.getDate();
             }
 

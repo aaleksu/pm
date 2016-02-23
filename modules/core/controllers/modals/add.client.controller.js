@@ -249,8 +249,7 @@ angular.module('core').controller('AddController', ['$scope', '$rootScope', 'pay
     $scope.payment_data = {};
 
     $scope.appendItem = function() {
-        $scope.sum = math.eval($scope.sum_expression);
-        //var value = Math.abs($scope.sum);
+        $scope.sum = $scope.sum_expression;
 
         if($scope.sum == 0 || $scope.sum == null || $scope.date == undefined) {
             $scope.errorText = 'Ошибка';
