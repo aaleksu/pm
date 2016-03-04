@@ -10,7 +10,7 @@ angular.module('core').controller('RootController', ['$scope', '$rootScope', '$m
     $rootScope.default_weeks_num = 16;
 
     if(typeof(prefpath) == 'undefined') {
-        var prefpath = '';
+        prefpath = '';
     }
 
     $interval(function(){
