@@ -9,7 +9,9 @@ angular.module('core').controller('RootController', ['$scope', '$rootScope', '$m
     $rootScope.total_spending = 0;
     $rootScope.default_weeks_num = 16;
 
-    var prefpath = prefpath || '';
+    if(typeof(prefpath) == 'undefined') {
+        var prefpath = '';
+    }
 
     $interval(function(){
         var view_mode_id = 'tree_view_mode';;
