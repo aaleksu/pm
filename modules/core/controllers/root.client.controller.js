@@ -9,6 +9,8 @@ angular.module('core').controller('RootController', ['$scope', '$rootScope', '$m
     $rootScope.total_spending = 0;
     $rootScope.default_weeks_num = 16;
 
+    var prefpath = prefpath || '';
+
     $interval(function(){
         var view_mode_id = 'tree_view_mode';;
         if($rootScope.prefs.viewMode == 'table') {
@@ -191,7 +193,7 @@ angular.module('core').controller('RootController', ['$scope', '$rootScope', '$m
     $rootScope.modals.add = {
         open: function(payment) {
             var modalInstance = $modal.open({
-                templateUrl: 'modules/core/views/modals/add.client.view.html',
+                templateUrl: prefpath + 'modules/core/views/modals/add.client.view.html',
                 controller: 'AddController',
                 size: 'lg',
                 resolve: {
@@ -212,7 +214,7 @@ angular.module('core').controller('RootController', ['$scope', '$rootScope', '$m
     $rootScope.modals.weekPrice = {
         open: function() {
             var modalInstance = $modal.open({
-                templateUrl: 'modules/core/views/modals/weekPrice.client.view.html',
+                templateUrl: prefpath + 'modules/core/views/modals/weekPrice.client.view.html',
                 controller: 'WeekPriceController'
             });
 
@@ -226,7 +228,7 @@ angular.module('core').controller('RootController', ['$scope', '$rootScope', '$m
     $rootScope.modals.startValue = {
         open: function() {
             var modalInstance = $modal.open({
-                templateUrl: 'modules/core/views/modals/startValue.client.view.html',
+                templateUrl: prefpath + 'modules/core/views/modals/startValue.client.view.html',
                 controller: 'StartValueController'
             });
         }
@@ -235,7 +237,7 @@ angular.module('core').controller('RootController', ['$scope', '$rootScope', '$m
     $rootScope.modals.startDate = {
         open: function() {
             var modalInstance = $modal.open({
-                templateUrl: 'modules/core/views/modals/startDate.client.view.html',
+                templateUrl: prefpath + 'modules/core/views/modals/startDate.client.view.html',
                 controller: 'StartDateController'
             });
         }
