@@ -8,10 +8,23 @@ angular.module('core').controller('RootController', ['$scope', '$rootScope', '$m
     $rootScope.regular_items = [];
     $rootScope.total_spending = 0;
     $rootScope.default_weeks_num = 16;
+    $scope.pref = 'fuck';
 
     if(typeof(prefpath) == 'undefined') {
         prefpath = '';
     }
+
+    $rootScope.templates = {
+        index: prefpath + 'app/views/home.client.view.html',
+        toolbar: prefpath + 'app/views/shared/_toolbar.html',
+        view_mode: prefpath + 'app/views/shared/_view.mode.html',
+        view_modes: {
+            tree: prefpath + 'app/views/shared/view_modes/_tree_mode.html',
+            table: prefpath + 'app/views/shared/view_modes/_table_mode.html',
+            list: prefpath + 'app/views/shared/view_modes/_list_mode.html'
+        },
+        export_import: prefpath + 'app/views/shared/_export.import.view.html'
+    };
 
     $interval(function(){
         var view_mode_id = 'tree_view_mode';;
@@ -25,11 +38,13 @@ angular.module('core').controller('RootController', ['$scope', '$rootScope', '$m
             view_mode_id = 'list_view_mode';
         }
         var view_mode_block = document.getElementById(view_mode_id);
-        var sum_blocks = view_mode_block.getElementsByClassName('expense_sum');
-        var sum = $rootScope.prefs.startValue;
-        for(var i = 0; i < sum_blocks.length; i++) {
-            sum += parseInt(sum_blocks[i].getAttribute('data-sum'));
-            sum_blocks[i].innerText = sum;
+        if(view_mode_block) {
+            var sum_blocks = view_mode_block.getElementsByClassName('expense_sum');
+            var sum = $rootScope.prefs.startValue;
+            for(var i = 0; i < sum_blocks.length; i++) {
+                sum += parseInt(sum_blocks[i].getAttribute('data-sum'));
+                sum_blocks[i].innerText = sum;
+            }
         }
 
     }, 2000);
