@@ -1,24 +1,26 @@
 require([
-    'app/vendor.min.js',
-    'app/ui-bootstrap-tpls-0.11.2.min.js',
-    'app/ru.js',
-    '../js/libs/math/math.min.js',
-    '../js/libs/underscore/underscore-min.js',
-    'app/config.js',
-    'app/application.js',
-    'app/core/core.client.module.js',
-    'app/bootstrap/core.client.bootstrap.js',
-    'app/config/core.client.routes.js',
-    'app/models/day.js',
-    'app/models/week.js',
-    'app/models/weeks_provider.js',
-    'app/models/payment.js',
-    'app/controllers/modals/weekPrice.client.controller.js',
-    'app/controllers/modals/startValue.client.controller.js',
-    'app/controllers/modals/startDate.client.controller.js',
-    'app/controllers/modals/add.client.controller.js',
-    'app/controllers/notice.controller.js',
-    'app/controllers/root.client.controller.js',
-    'app/controllers/prefs.client.controller.js',
-    'app/controllers/home.client.controller.js'
-])
+    'app/vendor.min',
+    // 'app/ui-bootstrap.min',
+    'app/ui-bootstrap-tpls-0.11.2.min',
+    'app/controllers/root_ctrl',
+    'app/controllers/notice_ctrl',
+    'app/controllers/home_ctrl',
+    'app/controllers/modals/add_ctrl',
+    'app/models/weeks_provider',
+    'app/models/week',
+    'app/models/day',
+    'app/models/payment'
+], function() {
+    var pm = angular.module('pm', ['ngResource', 'ngAnimate', 'ui.router', 'ui.utils', 'ui.bootstrap']);
+    pm.factory('Day', day);
+    pm.factory('Week', week);
+    pm.factory('WeeksProvider', weeksProvider);
+    pm.factory('Payment', payment);
+    pm.controller('rootCtrl', rootCtrl);
+    pm.controller('noticeCtrl', noticeCtrl);
+    pm.controller('homeCtrl', homeCtrl);
+    pm.controller('addCtrl', addCtrl);
+    angular.element(document).ready(function() {
+        angular.bootstrap(document, ['pm']);
+    });
+});
