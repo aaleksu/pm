@@ -1,4 +1,5 @@
-var rootCtrl = ['$scope', '$rootScope', '$modal', '$filter', '$interval', 'WeeksProvider', 'Payment', function($scope, $rootScope, $modal, $filter, $interval, WeeksProvider, Week) {
+var rootCtrl = ['$scope', '$rootScope', '$modal', '$http', '$interval', 'WeeksProvider', 'Payment', function($scope, $rootScope, $modal, $http, $interval, WeeksProvider, Payment) {
+    //var modals = new Modals();
     $rootScope.payments = [];
     $rootScope.yearsWeeks = {};
     $rootScope.dataTable = [];
@@ -206,26 +207,11 @@ var rootCtrl = ['$scope', '$rootScope', '$modal', '$filter', '$interval', 'Weeks
     };
 
     $rootScope.modals.add = {
-        open: function(payment) {
-            //require(['app/ui-bootstrap-tpls-0.11.2.min'], function() {
-                var modalInstance = $modal.open({
-                    backdrop: false,
-                    templateUrl: 'app/views/modals/add.html',
-                    windowTemplateUrl: 'app/views/modals/add.html',
-                    controller: 'addCtrl',
-                    size: 'lg',
-                    resolve: {
-                        payment: function() {
-                            return payment;
-                        }
-                    }
-                });
-                modalInstance.result.then(function (selectedItem) {
-                //$rootScope.updateTable();
-                }, function () {
-                });
-            //});
-            // console.log('++');
+        __op: function(payment) {
+            var templateUrl = prefpath + 'app/views/modals/add.html';
+            modals.add.open(templateUrl, payment);
+        },
+        op: function(payment) {
             // $modal.open({
             //     templateUrl: 'app/views/modals/add.html',
             //     controller: 'addCtrl',
@@ -236,16 +222,16 @@ var rootCtrl = ['$scope', '$rootScope', '$modal', '$filter', '$interval', 'Weeks
             //         }
             //     }
             // });
-            // var modalInstance = $modal.open({
-            //     templateUrl: prefpath + 'app/views/modals/add.client.view.html',
-            //     controller: 'addCtrl',
-            //     size: 'lg',
-            //     resolve: {
-            //         payment: function() {
-            //             return payment;
-            //         }
-            //     }
-            // });
+            var modalInstance = $modal.open({
+                templateUrl: prefpath + 'app/views/modals/add.client.view.html',
+                controller: 'addCtrl',
+                size: 'lg',
+                resolve: {
+                    payment: function() {
+                        return payment;
+                    }
+                }
+            });
 
             // modalInstance.result.then(function (selectedItem) {
             //     //$rootScope.updateTable();

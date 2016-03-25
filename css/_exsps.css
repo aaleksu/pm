@@ -1,4 +1,20 @@
 @import url(notice.css);
+.modal {
+  /*    background: #666;
+      opacity:.6;
+  */ }
+  .modal.show {
+    display: block; }
+  .modal .modal-wrapper {
+    background: #666;
+    bottom: 0;
+    left: 0;
+    opacity: .7;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%; }
+
 /*@grid-gutter-width: 0px;*/
 label.normal_label {
   font-weight: normal; }
