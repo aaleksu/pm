@@ -14,7 +14,7 @@ var rootCtrl = ['$scope', '$rootScope', '$modal', '$http', '$interval', 'WeeksPr
     }
 
     $rootScope.templates = {
-        index: prefpath + 'app/views/home.client.view.html',
+        index: prefpath + 'app/views/home.html',
         toolbar: prefpath + 'app/views/shared/_toolbar.html',
         view_mode: prefpath + 'app/views/shared/_view.mode.html',
         view_modes: {
@@ -22,7 +22,7 @@ var rootCtrl = ['$scope', '$rootScope', '$modal', '$http', '$interval', 'WeeksPr
             table: prefpath + 'app/views/shared/view_modes/_table_mode.html',
             list: prefpath + 'app/views/shared/view_modes/_list_mode.html'
         },
-        export_import: prefpath + 'app/views/shared/_export.import.view.html'
+        export_import: prefpath + 'app/views/shared/_export.import.html'
     };
 
     $interval(function(){
@@ -207,23 +207,9 @@ var rootCtrl = ['$scope', '$rootScope', '$modal', '$http', '$interval', 'WeeksPr
     };
 
     $rootScope.modals.add = {
-        __op: function(payment) {
-            var templateUrl = prefpath + 'app/views/modals/add.html';
-            modals.add.open(templateUrl, payment);
-        },
-        op: function(payment) {
-            // $modal.open({
-            //     templateUrl: 'app/views/modals/add.html',
-            //     controller: 'addCtrl',
-            //     size: 'lg',
-            //     resolve: {
-            //         payment: function() {
-            //             return payment;
-            //         }
-            //     }
-            // });
+        open: function(payment) {
             var modalInstance = $modal.open({
-                templateUrl: prefpath + 'app/views/modals/add.client.view.html',
+                templateUrl: prefpath + 'app/views/modals/add.html',
                 controller: 'addCtrl',
                 size: 'lg',
                 resolve: {
@@ -232,12 +218,6 @@ var rootCtrl = ['$scope', '$rootScope', '$modal', '$http', '$interval', 'WeeksPr
                     }
                 }
             });
-
-            // modalInstance.result.then(function (selectedItem) {
-            //     //$rootScope.updateTable();
-            // }, function () {
-
-            // });
         }
     };
 
