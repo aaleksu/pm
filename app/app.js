@@ -1,15 +1,15 @@
 var prefpath = (typeof prefpath == 'undefined') ? './' : prefpath;
 
-require.config({
+requirejs.config({
     baseUrl: prefpath
 });
 
-require([prefpath + 'app/vendor.min'], function() {
+requirejs([prefpath + 'app/vendor.min'], function() {
     loadDependencies();
 });
 
 function loadDependencies() {
-require([
+requirejs([
     //'app/vendor.min',
     'app/controllers/root_ctrl',
     'app/controllers/notice_ctrl',
