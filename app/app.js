@@ -1,4 +1,10 @@
-require(['app/vendor.min'], function() {
+var prefpath = (typeof prefpath == 'undefined') ? './' : prefpath;
+
+require.config({
+    baseUrl: prefpath
+});
+
+require([prefpath + 'app/vendor.min'], function() {
     loadDependencies();
 });
 
