@@ -4,7 +4,7 @@ requirejs.config({
     baseUrl: prefpath
 });
 
-requirejs([prefpath + 'app/vendor.min'], function() {
+requirejs([prefpath + 'app/vendor.min.js'], function() {
     loadDependencies();
 });
 
